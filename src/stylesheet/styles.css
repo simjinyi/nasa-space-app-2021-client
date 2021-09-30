@@ -1,0 +1,28 @@
+.hr-heading {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: none;
+  background-color: #c2337b;
+}
+
+.basic-1 .text-container {
+  margin-bottom: 4rem;
+}
+
+.basic-1 .hr-heading {
+  display: inline-block;
+  margin-top: 0.25rem;
+  margin-bottom: 1.375rem;
+}
+
+.basic-1 .fas {
+  font-size: 0.375rem;
+  line-height: 1.625rem;
+}
+
+.basic-1 .media-body {
+  margin-left: 0.5rem;
+}

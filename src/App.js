@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./stylesheet/magnific-popup.css";
+import "./stylesheet/styles.css";
+import "./stylesheet/swiper.css";
+import "./stylesheet/bootstrap.css";
+import "./stylesheet/fontawesome-all.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div class="basic-1">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-xl-5">
+              <div class="text-container">
+                <h2>Welcome to NASA</h2>
+                <hr class="hr-heading" />
+                <h4>Team members</h4>
+                <ul class="list-unstyled li-space-lg">
+                  <li class="media">
+                    <i class="fas fa-square"></i>
+                    <div class="media-body">Sim Jin Yi</div>
+                  </li>
+                  <li class="media">
+                    <i class="fas fa-square"></i>
+                    <div class="media-body">Tan Hoe Theng</div>
+                  </li>
+                  <li class="media">
+                    <i class="fas fa-square"></i>
+                    <div class="media-body">Jaclyn Neoh Su Ying</div>
+                  </li>
+                  <li class="media">
+                    <i class="fas fa-square"></i>
+                    <div class="media-body">Calvin Tan</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
