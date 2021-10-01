@@ -1,0 +1,152 @@
+@import "../theme.scss";
+
+.space-bg {
+  background-color: white;
+  min-width: 100vh;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: $primary-color;
+  width: 58px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $primary-color;
+  overflow: hidden;
+  transition: width 0.5s, height 0.5s;
+
+  .hr-heading {
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin-top: 0.25rem;
+    margin-bottom: 1.375rem;
+    border: none;
+    background-color: white;
+    display: none;
+  }
+
+  h3 {
+    color: white;
+    display: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  .header {
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .header input {
+    display: none;
+  }
+
+  .header .search {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    display: none;
+  }
+
+  .header .hamburger {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .header .title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    background-color: $secondary-color;
+    flex-grow: 1;
+  }
+
+  .content li {
+    min-width: 100%;
+    padding: 10px 0 10px 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+  }
+
+  .content li:hover {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+
+  .content .profile-name {
+    font-size: 1.1em;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: none;
+  }
+
+  .content .typing {
+    font-size: 0.85rem;
+  }
+
+  .profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid $primary-color;
+  }
+}
+
+.sidebar.active {
+  width: 300px;
+
+  .hr-heading {
+    display: inline-block;
+  }
+
+  .header input {
+    width: 95%;
+    display: inline;
+  }
+
+  .content .profile-name {
+    display: inline;
+  }
+
+  h3 {
+    display: inline;
+  }
+
+  .content li {
+    justify-content: flex-start;
+    padding: 1rem 10px 1rem 10px;
+  }
+
+  .content .profile {
+    margin: 0;
+  }
+
+  .header {
+    padding: 10px;
+    text-align: start;
+  }
+
+  .header .title {
+    display: flex;
+  }
+}
