@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faSearch,
+  faPaperPlane,
+} from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 
 export default function LiveCommunication() {
@@ -8,10 +12,10 @@ export default function LiveCommunication() {
     document.title = "Live Communication";
   }, []);
 
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
 
   return (
-    <div className="space-bg">
+    <div className="bg">
       <div className={"sidebar" + (showSidebar ? " active" : "")}>
         <div className="header">
           <div className="title">
@@ -55,6 +59,28 @@ export default function LiveCommunication() {
             />
             <div className="profile-name">Jaclyn Neoh Su Ying</div>
           </li>
+        </div>
+      </div>
+      <div className="main-content">
+        <div className="console-logs"></div>
+        <div className="console-logs">
+          <div className="my-logs">
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+          </div>
+          <div className="my-message">
+            <input placeholder="Type your log here..." />
+            <button>
+              <FontAwesomeIcon icon={faPaperPlane} onClick={() => {}} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
