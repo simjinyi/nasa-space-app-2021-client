@@ -1,45 +1,54 @@
-import "./stylesheet/magnific-popup.css";
-import "./stylesheet/styles.css";
-import "./stylesheet/swiper.css";
-import "./stylesheet/bootstrap.css";
-import "./stylesheet/fontawesome-all.css";
+import React,{useState} from 'react';
+import LoginForm from './components/LoginForm';
+import "./index.css";
+import "./Landing"
 
-function App() {
-  return (
-    <div className="App">
-      <div class="basic-1">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-xl-5">
-              <div class="text-container">
-                <h2>Welcome to NASA</h2>
-                <hr class="hr-heading" />
-                <h4>Team members</h4>
-                <ul class="list-unstyled li-space-lg">
-                  <li class="media">
-                    <i class="fas fa-square"></i>
-                    <div class="media-body">Sim Jin Yi</div>
-                  </li>
-                  <li class="media">
-                    <i class="fas fa-square"></i>
-                    <div class="media-body">Tan Hoe Theng</div>
-                  </li>
-                  <li class="media">
-                    <i class="fas fa-square"></i>
-                    <div class="media-body">Jaclyn Neoh Su Ying</div>
-                  </li>
-                  <li class="media">
-                    <i class="fas fa-square"></i>
-                    <div class="media-body">Calvin Tan</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+function App(){
+  const adminUser={
+    email:"admin@admin.com",
+    password:"admin",
+  }
+
+  const[user,setUser]=useState({name:"",email:""});
+  const[error,setError]=useState("");
+
+  const Login=details=>{
+    console.log(details);
+    if (details.email===adminUser.email&&details.password===adminUser.password){
+      console.log("Logged in");
+      setUser({
+        name:details.name,
+        email:details.email
+      });
+    }
+    else{
+      console.log("Details do not match!");
+      setError("Details do not match!");
+    }
+  }
+
+  const Logout=()=>{
+    setUser({name:"",email:""});
+  }
+
+  
+  //https://www.youtube.com/watch?v=tiAlSpyWIDs
+  return(
+    <div className='App'>
+      {(user.email!=="")?(
+        <div className="welcome">
+          <h2>
+            welcome, <span>{user.name}</span>
+          </h2>
+          <button onClick={Logout}>Logout</button>
         </div>
-      </div>
+      ):(
+        <LoginForm Login={Login} error={error} />
+
+      )}
     </div>
   );
 }
+
 
 export default App;
