@@ -30,7 +30,7 @@ function App() {
                   </li>
                   <li class="media">
                     <i class="fas fa-square"></i>
-                    <div class="media-body">Calvin Tan</div>
+                    <div class="media-body">Calvin Tan Wei Yang</div>
                   </li>
                 </ul>
               </div>
