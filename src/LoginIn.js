@@ -3,6 +3,8 @@ import LoginForm from './LoginForm';
 import "./index.css";
 import {useHistory} from "react-router-dom";
 
+
+
 function LoginIn(){
   //connect database here!
   const adminUser={
@@ -18,11 +20,13 @@ function LoginIn(){
 
   const Login = details=>{
     console.log(details);
+    // replca this part to check
     if (details.email===adminUser.email&&details.password===adminUser.password){
       console.log("Logged in");
       setUser({
         name:details.name,
-        email:details.email
+        email:details.email,
+
       });
     }
     else{
