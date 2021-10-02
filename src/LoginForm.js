@@ -1,9 +1,13 @@
 import React,{useState} from "react";
-//import {BrowserRouter as Router,Route,Link} from "react-router-dom";
-//import App from "./App";
-//import Landing from "./Landing";
+import {useHistory} from "react-router-dom";
 
 function LoginForm({Login,error}){
+
+    const history=useHistory();
+    const register=()=>{
+        history.push("/Register")
+      }
+
     const[details,setDetails]=useState({name:"",email:"",password:""});
     
     const submitHandler=e=>{
@@ -29,7 +33,7 @@ function LoginForm({Login,error}){
                     <input type="password" name="password" id="password" onChange={e=>setDetails({...details,password:e.target.value})} value={details.password}/>
                 </div>
                 <button onClick={<input type="submit" value="LOGIN"/>}>LOGIN</button>
-                <button onClick={<input type="submit" value="LOGIN"/>}>REGISTER</button>
+                <button onClick={register}>REGISTER</button>
 
             </div>
         </form>

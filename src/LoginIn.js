@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import "./index.css";
 import {useHistory} from "react-router-dom";
 
-function App(){
+function LoginIn(){
   const adminUser={
     email:"admin@admin.com",
     password:"admin",
@@ -44,4 +44,4 @@ function App(){
 }
 
 
-export default App;
+export default LoginIn;
