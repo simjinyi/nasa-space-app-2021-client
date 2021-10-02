@@ -4,7 +4,7 @@ import "./stylesheet/swiper.css";
 import "./stylesheet/bootstrap.css";
 import "./stylesheet/fontawesome-all.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import PastLogs from "./LiveCommunication/LiveCommunication";
+import PastLogs from "./PastLogs/PastLogs";
 
 // const numbers = [1, 2, 3, 4, 5];
 function App() {
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" exact={true}>
             <div>Users</div>
           </Route>
-          <Route path="/live-communication" exact={true}>
+          <Route path="/PastLogs" exact={true}>
             <PastLogs numbers = {[1, 2, 3, 4, 5]}/>
           </Route>
         </Switch>

@@ -14,13 +14,11 @@ export default function PastLogs(props) {
   }, []);
 
   let testerVariable = 0;
+  let testerArray = [1, 2, 3, 4, 5]
   let [count, setCount] = useState(0);
   let [isToggled, setIsToggled] = useState(0);
-
-  function addition() {
-    console.log(testerVariable);
-    testerVariable = testerVariable + 1;
-  }
+  let [isColour, setColour] = useState('');
+  let [isAll, setAll] = useState(1);
 
   // const [name, setName] = useState({firstName:'', lastName:''})
   // const [item, setItems] = useState([])
@@ -33,18 +31,19 @@ export default function PastLogs(props) {
 
   const [showSidebar, setShowSidebar] = useState(true);
 
-  
-
   const messages = [
-    {name: 'Charizard', type: 'Fire/Flying', finalEvolution: 'Yes'},
-    {name: 'Blastoise', type: 'Water', finalEvolution: 'Yes'},
-    {name: 'Venusaur', type: 'Grass/Posion', finalEvolution: 'Yes'},
+    {name: 'Charizard', type: 'Fire/Flying', finalEvolution: 1},
+    {name: 'Blastoise', type: 'Water', finalEvolution: 1},
+    {name: 'Venusaur', type: 'Grass/Posion', finalEvolution: 1},
+    {name: 'Pikachu', type: 'Electric', finalEvolution: 0},
   ]
 
   const lyrics = [
-    {time: '0:16', type: '赤', word: '錆つ付いた心、音もない世界何を見てるの　？'},
-    {time: '1:22', type: '青', word: '強がりの声もかすれな、と夢に落ちるの'},
-    {time: '1:53', type: '合', word: '単純で無邪気な顔'},
+    {time: '0:16', type: '赤', word: 'Red 1　？', all: 1},
+    {time: '0:25', type: '赤', word: 'Red 2', all: 1},
+    {time: '0:31', type: '青', word: 'Blue 1', all: 1},
+    {time: '1:22', type: '青', word: 'Blue 2', all: 1},
+    {time: '1:53', type: '合', word: 'Mix 1', all: 1},
   ]
 
   const numbers = props.numbers;
@@ -101,7 +100,19 @@ export default function PastLogs(props) {
           </li>
 
           <li>
-            <div className="profile-name" onClick={addition}>Testing</div>
+            <div className="profile-name" onClick={()=>setIsToggled(isToggled = 1)}>Testing</div>
+          </li>
+
+          <li>
+            <div className="profile-name" onClick={()=>{setColour(isColour = ''); setAll(isAll = 1)}}>All</div>
+          </li>
+
+          <li>
+            <div className="profile-name" onClick={()=> {setColour(isColour = '赤'); setAll(isAll = 0)}}>赤</div>
+          </li>
+
+          <li>
+            <div className="profile-name" onClick={()=> {setColour(isColour = '青'); setAll(isAll = 0)}}>青</div>
           </li>
 
         </div>
@@ -127,11 +138,32 @@ export default function PastLogs(props) {
 
             <div className="log">
               {
+                messages.map((message) =>
+                <div>
+                  {message.finalEvolution === isToggled ? 
+                    <div><span className="author">{message.name}</span>{message.type}</div> : ''}
+                </div>
+                )
+              }
+            </div>
+            
+            <div className="log">
+              {
                 lyrics.map((lyric) =>
                 <div>
                   <div>
-                    <span className="date">{lyric.time}</span><br/>
-                    <span className="author">{lyric.type}</span> {lyric.word}
+                    
+                    {/* {lyric.type === isColour ? 
+                    <div><span className="date">{lyric.time}</span><br/>
+                    <span className="author">{lyric.type}</span> {lyric.word}</div> : console.log(isColour)} */}
+
+                    {lyric.all === isAll ? 
+                    <div><span className="date">{lyric.time}</span><br/>
+                    <span className="author">{lyric.type}</span> {lyric.word}</div> : ''}
+                    {lyric.type === isColour ? 
+                    <div><span className="date">{lyric.time}</span><br/>
+                    <span className="author">{lyric.type}</span> {lyric.word}</div> : ''}
+
                   </div>
                   <br />
                 </div>
@@ -143,7 +175,7 @@ export default function PastLogs(props) {
               {
                 <div>
                   Count : {count}
-                  Toggled : {isToggled}
+                  Toggled : {testerArray[isToggled]}
                   Test : {testerVariable}
                   {/* Toggled : {isToggled === 0 ? <p> The value is 0 </p> : <p> The value is 1 </p>} */}
                 </div>
