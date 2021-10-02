@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
-  faSearch,
   faPaperPlane,
+  faPaperclip,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 
@@ -62,9 +62,91 @@ export default function LiveCommunication() {
         </div>
       </div>
       <div className="main-content">
-        <div className="console-logs"></div>
         <div className="console-logs">
-          <div className="my-logs">
+          <div className="header">
+            <h3>All</h3>
+          </div>
+          <div className="all-logs">
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="author">Jeffrey:</span> Is time to be productive.
+            </div>
+            <div className="log">
+              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="author">Jeffrey:</span>
+              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+            </div>
+          </div>
+        </div>
+        <div className="console-logs">
+          <div className="header">
+            <h3>My logs</h3>
+          </div>
+          <div className="all-logs">
             <div className="log">
               <span className="date">12-12-2021 05:24</span> <br />
               <span className="author">Jeffrey:</span> Is time to be productive.
@@ -76,8 +158,16 @@ export default function LiveCommunication() {
             </div>
           </div>
           <div className="my-message">
-            <input placeholder="Type your log here..." />
-            <button>
+            <button className="btn">
+              <FontAwesomeIcon icon={faPaperclip} onClick={() => {}} />
+            </button>
+            <textarea
+              className="message"
+              placeholder="Type your log here..."
+              type="text"
+              rows={2}
+            />
+            <button className="btn">
               <FontAwesomeIcon icon={faPaperPlane} onClick={() => {}} />
             </button>
           </div>

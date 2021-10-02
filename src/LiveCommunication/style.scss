@@ -154,44 +154,52 @@
 .main-content {
   flex-grow: 1;
   display: flex;
-}
 
-.console-logs {
-  width: 50%;
-  border-right: 5px solid $primary-color;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-}
+  .console-logs {
+    width: 50%;
 
-.my-logs {
-  flex-grow: 1;
-}
+    display: flex;
+    flex-direction: column;
+  }
 
-.my-message {
-  background-color: $secondary-color;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+  .header {
+    background-color: #062c43;
+    color: white;
+    text-align: center;
+  }
 
-.my-message input {
-  flex-grow: 1;
-}
+  .all-logs {
+    flex-grow: 1;
+    overflow-y: scroll;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
-.my-message svg {
-  flex-grow: 1;
-}
+  .my-message {
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-.date {
-  font-weight: bold;
-}
+  .my-message textarea {
+    flex-grow: 1;
+  }
 
-.author {
-  font-style: italic;
-  margin-right: 0.5rem;
-}
+  .my-message svg {
+    flex-grow: 1;
+  }
 
-.log {
-  margin-top: 1rem;
+  .date {
+    font-weight: bold;
+  }
+
+  .author {
+    font-style: italic;
+    margin-right: 0.5rem;
+  }
+
+  .log {
+    margin-top: 1rem;
+  }
 }
