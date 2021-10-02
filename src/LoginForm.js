@@ -1,10 +1,16 @@
 import React,{useState} from "react";
+//import {BrowserRouter as Router,Route,Link} from "react-router-dom";
+//import App from "./App";
+//import Landing from "./Landing";
+
 function LoginForm({Login,error}){
     const[details,setDetails]=useState({name:"",email:"",password:""});
+    
     const submitHandler=e=>{
         e.preventDefault();
         Login(details);
     }
+    
     return(
         <form onSubmit={submitHandler}>
             <div className= "form-inner">
@@ -22,11 +28,30 @@ function LoginForm({Login,error}){
                     <label htmlFor="password">Password:</label>
                     <input type="password" name="password" id="password" onChange={e=>setDetails({...details,password:e.target.value})} value={details.password}/>
                 </div>
-                <input type="submit" value="LOGIN"/>
-            </div>
+                <button onClick={<input type="submit" value="LOGIN"/>}>LOGIN</button>
+                <button onClick={<input type="submit" value="LOGIN"/>}>REGISTER</button>
 
+            </div>
         </form>
     )
 }
 
 export default LoginForm
+
+/** 
+ <input type="submit" value="LOGIN"/>
+        <input type="submit" value="LOGOUT"/>
+        <Link to="/signup" className="btn btn-primary">Sign up</Link>
+                
+<Router>
+    <Route path="/" exact>
+        <App/>
+    </Route>
+    <Route path="/Landing" exact>
+        <Landing/>
+    </Route>
+    <div>
+    <Link to="../Landing" className="btn btn-primary">Landing</Link>
+    </div>
+</Router>   
+                */
