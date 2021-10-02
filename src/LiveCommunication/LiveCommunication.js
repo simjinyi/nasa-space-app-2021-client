@@ -17,6 +17,7 @@ export default function LiveCommunication() {
 
   const [showSidebar, setShowSidebar] = useState(true);
   const [zoomIdx, setZoomIdx] = useState(-1);
+  const [log, setLog] = useState("");
 
   function uploadAdapter(loader) {
     return {
@@ -238,25 +239,19 @@ export default function LiveCommunication() {
             <div className="log">
               <span className="date">12-12-2021 05:29</span> <br />
               <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
+              <div
+                className="log-content"
+                dangerouslySetInnerHTML={{ __html: log }}
+              ></div>
             </div>
           </div>
           <div className="ckeditor">
             <CKEditor
               editor={ClassicEditor}
-              data=""
-              onReady={(editor) => {
-                // console.log("Editor is ready to use!", editor);
-              }}
+              data={log}
               onChange={(event, editor) => {
                 const data = editor.getData();
-                // console.log({ event, editor, data });
-              }}
-              onBlur={(event, editor) => {
-                // console.log("Blur.", editor);
-              }}
-              onFocus={(event, editor) => {
-                // console.log("Focus.", editor);
+                setLog(data);
               }}
               config={{
                 extraPlugins: [uploadPlugin],

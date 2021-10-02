@@ -14,10 +14,7 @@ function Register() {
     } else if (details.name.length === 0 || details.email.length === 0) {
       setError("Name and email cannot be empty");
     } else {
-      console.log("nani");
-      console.log(
-        (await axios.post("http://localhost:8080/register", details)).data
-      );
+      await axios.post("http://localhost:8080/register", details);
       history.push("/Landing");
     }
   };
