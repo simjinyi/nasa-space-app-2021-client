@@ -41,21 +41,3 @@ function LoginForm({Login,error}){
 }
 
 export default LoginForm
-
-/** 
- <input type="submit" value="LOGIN"/>
-        <input type="submit" value="LOGOUT"/>
-        <Link to="/signup" className="btn btn-primary">Sign up</Link>
-                
-<Router>
-    <Route path="/" exact>
-        <App/>
-    </Route>
-    <Route path="/Landing" exact>
-        <Landing/>
-    </Route>
-    <div>
-    <Link to="../Landing" className="btn btn-primary">Landing</Link>
-    </div>
-</Router>   
-                */
