@@ -158,7 +158,7 @@
   min-height: 100vh;
 
   .console-logs {
-    width: 50%;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -177,20 +177,20 @@
     padding-right: 1rem;
   }
 
-  .my-message {
-    background-color: $secondary-color;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+  // .my-message {
+  //   background-color: $secondary-color;
+  //   display: flex;
+  //   flex-direction: row;
+  //   align-items: center;
+  // }
 
-  .my-message textarea {
-    flex-grow: 1;
-  }
+  // .my-message textarea {
+  //   flex-grow: 1;
+  // }
 
-  .my-message svg {
-    flex-grow: 1;
-  }
+  // .my-message svg {
+  //   flex-grow: 1;
+  // }
 
   .date {
     font-weight: bold;
