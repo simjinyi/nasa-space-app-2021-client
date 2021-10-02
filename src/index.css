@@ -48,6 +48,7 @@ form .form-inner h2{
     font-size: 28px;
     font-weight: 500;
     margin-bottom: 30px;
+    align-items: center;
 }
 
 form .form-inner .form-group{

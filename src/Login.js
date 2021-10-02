@@ -32,7 +32,7 @@ function App(){
 
   //https://www.youtube.com/watch?v=tiAlSpyWIDs
   return(
-    <div className='Login'>
+    <div className='App'>
       {(user.email!=="")?(
         history.push("/Landing")
       ):(
