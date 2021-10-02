@@ -154,6 +154,8 @@
 .main-content {
   flex-grow: 1;
   display: flex;
+  max-height: 100vh;
+  min-height: 100vh;
 
   .console-logs {
     width: 50%;
