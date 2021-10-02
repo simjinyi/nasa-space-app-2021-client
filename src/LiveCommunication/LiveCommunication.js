@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faPaperPlane,
-  faPaperclip,
+  faExpandArrowsAlt,
+  faCompressArrowsAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export default function LiveCommunication() {
   useEffect(() => {
@@ -13,6 +16,39 @@ export default function LiveCommunication() {
   }, []);
 
   const [showSidebar, setShowSidebar] = useState(true);
+  const [zoomIdx, setZoomIdx] = useState(-1);
+
+  function uploadAdapter(loader) {
+    return {
+      upload: () => {
+        return new Promise((resolve, reject) => {
+          const body = new FormData();
+          loader.file.then((file) => {
+            body.append("image", file);
+            fetch(`http://localhost:8080/upload`, {
+              method: "post",
+              body: body,
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                resolve({
+                  default: `http://localhost:8080/${res.path}`,
+                });
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          });
+        });
+      },
+    };
+  }
+
+  function uploadPlugin(editor) {
+    editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
+      return uploadAdapter(loader);
+    };
+  }
 
   return (
     <div className="bg">
@@ -62,9 +98,33 @@ export default function LiveCommunication() {
         </div>
       </div>
       <div className="main-content">
-        <div className="console-logs">
+        <div
+          className={
+            "console-logs" +
+            (zoomIdx === 1 ? " zoom" : zoomIdx === -1 ? "" : " hide")
+          }
+        >
           <div className="header">
             <h3>All</h3>
+            {zoomIdx !== 1 ? (
+              <button className="btn h-100">
+                <FontAwesomeIcon
+                  icon={faExpandArrowsAlt}
+                  onClick={() => {
+                    setZoomIdx(1);
+                  }}
+                />
+              </button>
+            ) : (
+              <button className="btn h-100">
+                <FontAwesomeIcon
+                  icon={faCompressArrowsAlt}
+                  onClick={() => {
+                    setZoomIdx(-1);
+                  }}
+                />
+              </button>
+            )}
           </div>
           <div className="all-logs">
             <div className="log">
@@ -142,9 +202,33 @@ export default function LiveCommunication() {
             </div>
           </div>
         </div>
-        <div className="console-logs">
+        <div
+          className={
+            "console-logs" +
+            (zoomIdx === 2 ? " zoom" : zoomIdx === -1 ? "" : " hide")
+          }
+        >
           <div className="header">
             <h3>My logs</h3>
+            {zoomIdx !== 2 ? (
+              <button className="btn h-100">
+                <FontAwesomeIcon
+                  icon={faExpandArrowsAlt}
+                  onClick={() => {
+                    setZoomIdx(2);
+                  }}
+                />
+              </button>
+            ) : (
+              <button className="btn h-100">
+                <FontAwesomeIcon
+                  icon={faCompressArrowsAlt}
+                  onClick={() => {
+                    setZoomIdx(-1);
+                  }}
+                />
+              </button>
+            )}
           </div>
           <div className="all-logs">
             <div className="log">
@@ -157,17 +241,31 @@ export default function LiveCommunication() {
               你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
             </div>
           </div>
-          <div className="my-message">
-            <button className="btn">
-              <FontAwesomeIcon icon={faPaperclip} onClick={() => {}} />
-            </button>
-            <textarea
-              className="message"
-              placeholder="Type your log here..."
-              type="text"
-              rows={2}
+          <div className="ckeditor">
+            <CKEditor
+              editor={ClassicEditor}
+              data=""
+              onReady={(editor) => {
+                // console.log("Editor is ready to use!", editor);
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                // console.log({ event, editor, data });
+              }}
+              onBlur={(event, editor) => {
+                // console.log("Blur.", editor);
+              }}
+              onFocus={(event, editor) => {
+                // console.log("Focus.", editor);
+              }}
+              config={{
+                extraPlugins: [uploadPlugin],
+              }}
             />
-            <button className="btn">
+          </div>
+          <div className="my-message">
+            <button className="btn btn-info h-100">
+              <span className="mr-3">Send</span>
               <FontAwesomeIcon icon={faPaperPlane} onClick={() => {}} />
             </button>
           </div>
