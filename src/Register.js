@@ -23,7 +23,7 @@ function Register(){
               email:details.email,
               password:details.password
             });
-          axios.post('http://localhost:8080/register',details).then(response=>console.log("Uploaded"));
+          axios.post('http://localhost:8080/users/register',details).then(response=>console.log("Uploaded"));
         }
     }
 
