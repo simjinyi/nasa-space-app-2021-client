@@ -10,15 +10,23 @@ import { io } from "socket.io-client";
 import "./style.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useParams } from "react-router";
 
-//const socket = io("ws://192.168.0.203:8081/");
-const socket = io("ws://localhost:8081/");
+const socket = io("ws://localhost:8081/", {
+  // Need the JWT token here
+  query: {
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpbWppbnlpIiwiZW1haWwiOiJhYmNAZ21haWwuY29tIiwiaWF0IjoxNjMzMjM0NTI5fQ.kqUy65eFAwDOELYtX1RH-EG3jKh3IHg67yhjCSl_nZM",
+  },
+});
 
 export default function LiveCommunication() {
   const [messageInput, setMessageInput] = useState("");
   const [showSidebar, setShowSidebar] = useState(true);
   const [zoomIdx, setZoomIdx] = useState(-1);
   const [messages, setMessages] = useState([]);
+
+  const { id: missionID } = useParams();
 
   const handleDateTimeString = (dateTime) => {
     const object = new Date(dateTime);
@@ -45,7 +53,7 @@ export default function LiveCommunication() {
     }
 
     socket.emit("createMessage", {
-      missionID: "6157df7fbc3231a632b72fe6",
+      missionID,
       content: messageInput,
     });
 
@@ -65,13 +73,13 @@ export default function LiveCommunication() {
 
   useEffect(() => {
     socket.emit("loadMessage", {
-      missionID: "6157df7fbc3231a632b72fe6",
+      missionID,
     });
 
     socket.on("messageLoaded", (response) => {
       setMessages(response.map((message) => handleMessage(message)));
     });
-  }, [handleMessage]);
+  }, [missionID, handleMessage]);
 
   function uploadAdapter(loader) {
     return {
