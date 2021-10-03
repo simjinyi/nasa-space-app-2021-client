@@ -11,6 +11,7 @@ import Landing from "./landing/Landing";
 import Register from "./Register/Register";
 import LiveCommunicationLobby from "./LiveLobby/LiveLobby";
 import LockedLogLobby from "./LockedLogLobby/LockedLogLobby";
+import LockedCommunication from "./LockedLobby/LockedLobby";
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
             exact={true}
             path="/lockedLogLobby"
             component={LockedLogLobby}
+          />
+          <Route
+            exact={true}
+            path="/lockedLog"
+            component={LockedCommunication}
           />
         </Switch>
       </div>

@@ -339,35 +339,6 @@ export default function LiveCommunication() {
               </div>
             </div>
           </div>
-          <div className="ckeditor">
-            <CKEditor
-              editor={ClassicEditor}
-              data={messageInput}
-              onReady={(editor) => {
-                // console.log("Editor is ready to use!", editor);
-              }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                handleInput(data);
-                // console.log({ event, editor, data });
-              }}
-              onBlur={(event, editor) => {
-                // console.log("Blur.", editor);
-              }}
-              onFocus={(event, editor) => {
-                // console.log("Focus.", editor);
-              }}
-              config={{
-                extraPlugins: [uploadPlugin],
-              }}
-            />
-          </div>
-          <div className="my-message">
-            <button className="btn btn-info h-100" onClick={handleSend}>
-              <span className="mr-3">Send</span>
-              <FontAwesomeIcon icon={faPaperPlane} />
-            </button>
-          </div>
         </div>
       </div>
     </div>
