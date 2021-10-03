@@ -11,38 +11,44 @@
 - Lau Kuan Sin
 - Yap Wei Juin
 
-### MERN stack
+## MERN stack
 
-### Sample Screenshots
+![Login](./Image/MERN%20Stack.jpeg)
 
-#### Login
+## Demo
 
-![Login](http://url/to/img.png)
+### Login
 
-#### Register
+![Login](./Image/Login.png)
+
+### Register
 
 ![Register](./Image/Register.png)
 
-#### Landing
+### Landing
 
-![Landing](http://url/to/img.png)
+![Landing](./Image/Landing.gif)
 
-#### Lobby
+### Live Logs
 
-![Lobby](http://url/to/img.png)
+![LiveLogs](./Image/Lobby%20Live%20Communication.png)
 
-#### Live Logs
+![LiveLogsSearching](<./Image/Lobby%20Live%20Communication%20(Searching).png>)
 
-![Live Logs](http://url/to/img.png)
+### Past Logs
 
-#### Past Logs
+![Past Logs](./Image/Past%20Log.png)
 
-![Past Logs](http://url/to/img.png)
+### Live Communication & Editing
 
-#### Live Communication & Editing
+![Live Communication & Editing Collapse](./Image/Live%20Communication%20Logs.png)
 
-![Live Communication & Editing](http://url/to/img.png)
+![Live Communication & Editing Collapse](./Image/Live%20Communication%20Collapsible.png)
 
-#### Locked Past Logs
+![Live Communication & Editing Collapse](./Image/Live%20Communication%20Logs%20Maximize%20my%20log.png)
 
-![Locked Past Logs](http://url/to/img.png)
+![Live Communication & Editing Collapse](Image/Live%20Communication%20Maximize%20All%20logs.png)
+
+### Locked Past Logs
+
+![Locked Past Logs](./Image/Past%20Log%20Locked.png)
