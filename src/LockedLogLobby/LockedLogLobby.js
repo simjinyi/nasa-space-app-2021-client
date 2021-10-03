@@ -156,6 +156,8 @@ export default function LockedCommunication() {
             />
             <div className="profile-name">
               <span>Sim Jin Yi</span>
+              <br />
+              <span className="typing">is typing...</span>
             </div>
           </li>
           <li>
@@ -172,7 +174,7 @@ export default function LockedCommunication() {
               src="https://scontent.fkul8-1.fna.fbcdn.net/v/t1.18169-9/14716166_1502782186415038_6142626552299967482_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=yP2oC2ZnYo0AX8cQJ3C&tn=uoqGRqqwFkm6aLHd&_nc_ht=scontent.fkul8-1.fna&oh=9d38a355de40ae42272cc8c8f780a8ea&oe=617E7F40"
               alt="Jaclyn"
             />
-            <div className="profile-name">Calvin Tan</div>
+            <div className="profile-name">Tan Wei Yang</div>
           </li>
           <li>
             <img
@@ -188,7 +190,7 @@ export default function LockedCommunication() {
               src="https://scontent.fkul8-1.fna.fbcdn.net/v/t1.6435-9/131692598_3841080082610840_2205449051390480024_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=v4Q-aoH0SzIAX8kZsp-&tn=uoqGRqqwFkm6aLHd&_nc_ht=scontent.fkul8-1.fna&oh=db13419a0096d2221b324d2d791ef4cf&oe=617FA49B"
               alt="Jaclyn"
             />
-            <div className="profile-name">Wei Juin</div>
+            <div className="profile-name">Yap Wei Juin</div>
           </li>
         </div>
       </div>
