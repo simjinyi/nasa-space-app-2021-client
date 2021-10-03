@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -19,17 +19,30 @@ export default function LiveCommunication() {
   const [zoomIdx, setZoomIdx] = useState(-1);
   const [messages, setMessages] = useState([]);
 
-  const handleMessage = (message) => ({
-    timestamp: message.timestamp,
-    username: message.username,
-    message: message.payload[0].contentBody,
-  });
+  const handleDateTimeString = (dateTime) => {
+    const object = new Date(dateTime);
+    return object.toLocaleString();
+  };
 
-  const handleInputChange = (e) => {
-    setMessageInput(e.target.value);
+  const handleMessage = useCallback(
+    (message) => ({
+      timestamp: handleDateTimeString(message.timestamp),
+      username: message.username,
+      body: message.payload[0].contentBody,
+    }),
+    []
+  );
+
+  const handleInput = (value) => {
+    setMessageInput(value);
   };
 
   const handleSend = () => {
+    // Ensure that the message is not empty
+    if (!messageInput) {
+      return;
+    }
+
     socket.emit("createMessage", {
       missionID: "6157df7fbc3231a632b72fe6",
       content: messageInput,
@@ -47,7 +60,7 @@ export default function LiveCommunication() {
       const newMessage = handleMessage(response);
       setMessages([...messages, newMessage]);
     });
-  }, [messages]);
+  }, [handleMessage, messages]);
 
   useEffect(() => {
     socket.emit("loadMessage", {
@@ -57,7 +70,7 @@ export default function LiveCommunication() {
     socket.on("messageLoaded", (response) => {
       setMessages(response.map((message) => handleMessage(message)));
     });
-  }, []);
+  }, [handleMessage]);
 
   function uploadAdapter(loader) {
     return {
@@ -172,7 +185,7 @@ export default function LiveCommunication() {
               <div className="log" key={index}>
                 <span className="date">{message.timestamp}</span> <br />
                 <span className="author">{message.username}:</span>
-                {message.message}
+                <div dangerouslySetInnerHTML={{ __html: message.body }} />
               </div>
             ))}
           </div>
@@ -219,12 +232,13 @@ export default function LiveCommunication() {
           <div className="ckeditor">
             <CKEditor
               editor={ClassicEditor}
-              data=""
+              data={messageInput}
               onReady={(editor) => {
                 // console.log("Editor is ready to use!", editor);
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
+                handleInput(data);
                 // console.log({ event, editor, data });
               }}
               onBlur={(event, editor) => {
