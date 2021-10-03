@@ -9,7 +9,7 @@ import LiveCommunication from "./LiveCommunication/LiveCommunication";
 import Login from "./Login/LogIn";
 import Landing from "./Landing/Landing";
 import Register from "./Register/Register";
-import LiveCommunicationLobby from "./LiveCommunicationLobby/LiveCommunicationLobby";
+import LiveCommunicationLobby from "./LiveLobby/LiveLobby";
 import LockedLogLobby from "./LockedLogLobby/LockedLogLobby";
 
 function App() {

@@ -22,6 +22,14 @@ function LiveLobby() {
       roomOwner: "Lau Kuan Sin",
       numberOfPerson: 45,
     },
+    { roomName: "Mission Apollo", roomOwner: "Calvin", numberOfPerson: 22 },
+    { roomName: "Mission KCK", roomOwner: "Jaclyn", numberOfPerson: 29 },
+    { roomName: "Mission 123", roomOwner: "Yap Wen Juin", numberOfPerson: 68 },
+    {
+      roomName: "Mission KFC",
+      roomOwner: "Leong Yong Peng",
+      numberOfPerson: 1,
+    },
   ];
 
   const roomCard = (card1, card2) => {
@@ -123,7 +131,7 @@ function LiveLobby() {
         <div className="bg-overlay">
           <div className="row">
             <div className="col-md-12 mx-auto">
-              <h1 className="text-white text-center">Past Log</h1>
+              <h1 className="text-white text-center">Live Communication</h1>
             </div>
           </div>
           <div className="container">
@@ -139,6 +147,16 @@ function LiveLobby() {
                     setSearchTerm(event.target.value);
                   }}
                 />
+              </div>
+              <div>
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  onClick={addRoomDialog}
+                >
+                  <FontAwesomeIcon icon={faPlus} className="mr-1" />
+                  Add Room
+                </button>
               </div>
             </div>
 

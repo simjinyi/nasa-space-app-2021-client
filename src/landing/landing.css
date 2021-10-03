@@ -1,82 +1,106 @@
-body,html{
-    height: 100%;
-    margin: 0;
-  }
-.Landing.background{
-    background-image: url('/src/images/background.jpg');
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.top-buffer{
-    padding-top: 20px;
+.landing {
+  background-image: url("/src/images/background.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.buttonGroup{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.background {
+  background-color: rgba(0, 0, 0, 70%);
+  height: 100%;
+  width: 100%;
 }
 
-.liveComButton{
-    margin-right: 100px;
-    width: 250px;
-    height: 150px;
-    background:linear-gradient(to bottom, #31435e 5%, #969696 100%);
-	background-color:#31435e;
-	border-radius:8px;
-	border:1px solid #84898f;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #4e5159;
+.top-buffer {
+  padding-top: 20px;
 }
-.liveComButton span{
-    font-style: italic;
-    margin-bottom: 0em;
-    font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+.buttonGroup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
+.liveComButton {
+  margin-right: 100px;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(to bottom, #31435e 5%, #969696 100%);
+  background-color: #31435e;
+  border-radius: 8px;
+  border: 1px solid #84898f;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #4e5159;
+  transition: width 0.2s, height 0.2s;
+}
+
+.liveComButton span {
+  font-style: italic;
+  margin-bottom: 0em;
+  font-size: 30px;
+}
+
 .liveComButton:hover {
-	background:linear-gradient(to bottom, #969696 5%, #31435e 100%);
-	background-color:#969696;
+  height: 300px;
+  width: 300px;
+  background: linear-gradient(to bottom, #969696 5%, #31435e 100%);
+  background-color: #969696;
+  transition: width 0.2s, height 0.2s;
 }
+
 .liveComButton:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 
-.hisLogButton{
-    margin-left: 100px;
-    width: 250px;
-    height: 150px;
-    background:linear-gradient(to bottom, #34408f 5%, #7097e0 100%);
-	background-color:#34408f;
-	border-radius:8px;
-	border:1px solid #213396;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #4e5159;
+.landing .icon {
+  font-size: 3rem;
 }
 
-.hisLogButton span{
-    font-style: italic;
-    margin-bottom: 0em;
-    font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.landing h2 {
+  margin-top: 30px;
+  text-align: center;
+}
 
+.hisLogButton {
+  margin-left: 100px;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(to bottom, #34408f 5%, #7097e0 100%);
+  background-color: #34408f;
+  border-radius: 8px;
+  border: 1px solid #213396;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #4e5159;
+  transition: width 0.2s, height 0.2s;
+}
+
+.hisLogButton span {
+  font-style: italic;
+  margin-bottom: 0em;
+  font-size: 30px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .hisLogButton:hover {
-	background:linear-gradient(to bottom, #7097e0 5%, #34408f 100%);
-	background-color:#7097e0;
+  height: 300px;
+  width: 300px;
+  background: linear-gradient(to bottom, #7097e0 5%, #34408f 100%);
+  background-color: #7097e0;
+  transition: width 0.2s, height 0.2s;
 }
+
 .hisLogButton:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
