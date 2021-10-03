@@ -229,11 +229,15 @@ export default function LiveCommunication() {
           </div>
           <div className="all-logs">
             <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
+              <span className="date">12-12-2021 05:24</span>
+              <span className="text-info ml-2">Edit</span>
+              <br />
               <span className="author">Jeffrey:</span> Is time to be productive.
             </div>
             <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
+              <span className="date">12-12-2021 05:29</span>{" "}
+              <span className="text-info ml-2">Edit</span>
+              <br />
               <span className="author">Jeffrey:</span>
               <div
                 className="log-content"

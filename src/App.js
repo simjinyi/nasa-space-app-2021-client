@@ -7,7 +7,7 @@ import "./stylesheet/fontawesome-all.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LiveCommunication from "./LiveCommunication/LiveCommunication";
 import Login from "./Login/LogIn";
-import Landing from "./Landing/Landing";
+import Landing from "./landing/Landing";
 import Register from "./Register/Register";
 import LiveCommunicationLobby from "./LiveLobby/LiveLobby";
 import LockedLogLobby from "./LockedLogLobby/LockedLogLobby";
