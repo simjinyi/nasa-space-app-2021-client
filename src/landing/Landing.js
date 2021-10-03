@@ -14,8 +14,9 @@ function Landing() {
     history.replace("/liveCommunicationLobby");
   }
 
+  // view past logs
   function clickHistoryLogBtn() {
-    history.replace("/historyLogLobby");
+    history.replace("/lockedLogLobby");
   }
 
   return (

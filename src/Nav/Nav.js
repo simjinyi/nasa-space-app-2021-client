@@ -37,7 +37,7 @@ export default function Nav() {
             </Link>
           </li>
           <li class="nav-item">
-            <Link to="/lockedLogLobby" class="nav-link" href="#">
+            <Link to="/lockedLog" class="nav-link" href="#">
               Past logs
             </Link>
           </li>
@@ -46,12 +46,12 @@ export default function Nav() {
       <div className="ml-auto">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <Link to="/profile" class="nav-link" href="#">
               <FontAwesomeIcon
                 icon={faUser}
-                onClick={() => history.replace("./")}
+                //onClick={() => history.replace("./")} ///profile
               />
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">

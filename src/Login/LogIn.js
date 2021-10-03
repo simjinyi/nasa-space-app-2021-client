@@ -28,7 +28,6 @@ function LoginIn() {
     }
   };
 
-  //https://www.youtube.com/watch?v=tiAlSpyWIDs
   return (
     <div className="main-container">
       <div className="form">
@@ -39,3 +38,6 @@ function LoginIn() {
 }
 
 export default LoginIn;
+
+// Reference: //https://www.youtube.com/watch?v=tiAlSpyWIDs
+// https://www.youtube.com/watch?v=91qEdc6dSUs&t=1201s

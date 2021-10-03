@@ -13,14 +13,14 @@ import LiveCommunicationLobby from "./LiveLobby/LiveLobby";
 import LockedLogLobby from "./LockedLogLobby/LockedLogLobby";
 import LockedCommunication from "./LockedLobby/LockedLobby";
 import Profile from "./Profile/Profile";
-import MissionCard from "./Profile/MissionCard";
-import SideBar from "./Profile/SideBar";
+
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
+          <Route exact={true} path="/" component={Login} />
           <Route
             path="/live-communication/:id"
             exact={true}
@@ -29,6 +29,7 @@ function App() {
           <Route exact={true} path="/login" component={Login} />
           <Route exact={true} path="/register" component={Register} />
           <Route exact={true} path="/landing" component={Landing} />
+          <Route exact={true} path="/profile" component={Profile} />
           <Route
             exact={true}
             path="/liveCommunicationLobby"
@@ -45,7 +46,6 @@ function App() {
             component={LockedCommunication}
           />
           <Route exact={true} path="/profile" component={Profile}></Route>
-          <Route exact={true} path="/mission" component={MissionCard}></Route>
         </Switch>
       </div>
     </Router>
