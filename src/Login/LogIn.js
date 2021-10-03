@@ -8,7 +8,7 @@ function LoginIn() {
   const [error, setError] = useState("");
 
   const login = async (details) => {
-    const res = await fetch("http://localhost:8080/login", {
+    const res = await fetch("http://localhost:8080/users/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",

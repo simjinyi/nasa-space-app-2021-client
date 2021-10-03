@@ -14,7 +14,7 @@ function Register() {
     } else if (details.name.length === 0 || details.email.length === 0) {
       setError("Name and email cannot be empty");
     } else {
-      await axios.post("http://localhost:8080/register", details);
+      await axios.post("http://localhost:8080/users/register", details);
       history.push("/Landing");
     }
   };

@@ -11,7 +11,8 @@ import "./style.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const socket = io("ws://192.168.0.203:8081/");
+//const socket = io("ws://192.168.0.203:8081/");
+const socket = io("ws://localhost:8081/");
 
 export default function LiveCommunication() {
   const [messageInput, setMessageInput] = useState("");
