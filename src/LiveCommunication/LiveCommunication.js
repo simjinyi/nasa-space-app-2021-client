@@ -224,6 +224,71 @@ export default function LiveCommunication() {
             )}
           </div>
           <div className="all-logs">
+            <div className="log">
+              <span className="date">3/10/2021 13:00</span> <br />
+              <span className="author">Tan Hoe Theng:</span>
+              <div>
+                <p>
+                  Okay, that the signal strength would just drop off and yaw
+                  would go to zero and pitch would go to 90.
+                </p>
+              </div>
+            </div>
+            <div className="log">
+              <span className="date">3/10/2021 13:02</span> <br />
+              <span className="author">Sim Jin Yi:</span>
+              <div>
+                <p>
+                  <b>Apollo 13</b>, Houston. The next thing we'd like you to do
+                  is to...
+                </p>
+              </div>
+            </div>
+            <div className="log">
+              <span className="date">3/10/2021 13:05</span> <br />
+              <span className="author">Jaclyn Neoh Su Ying:</span>
+              <div className="w-100">
+                <img
+                  style={{ height: "250px" }}
+                  src={require("../../src/images/cryopanel.png").default}
+                />
+                <br />
+                <small>
+                  MDC controls and displays for the cryogenic tanks.
+                </small>
+              </div>
+            </div>
+            <div className="log">
+              <span className="date">3/10/2021 13:08</span> <br />
+              <span className="author">Tan Wei Yang:</span>
+              <div>
+                <p>
+                  Roger. We see it. And we got a reading of minus 2 degrees on
+                  the docking index. We'd like to know if that's 2.0 precise or
+                  if it's 2.1 or 1.9.
+                </p>
+              </div>
+            </div>
+            <div className="log">
+              <span className="date">3/10/2021 13:10</span> <br />
+              <span className="author">Lau Kuan Sin:</span>
+              <div>
+                <audio
+                  controls
+                  autoPlay
+                  src={require("../../src/images/horse.mp3").default}
+                />
+              </div>
+            </div>
+            <div className="log">
+              <span className="date">2/10/2021 13:15</span> <br />
+              <span className="author">Yap Wei Juin:</span>
+              <div>
+                [Garble.] Ah, Houston, we've had a problem. We've had a Main B
+                Bus Undervolt.
+              </div>
+            </div>
+
             {messages.map((message, index) => (
               <div className="log" key={index}>
                 <span className="date">{message.timestamp}</span> <br />
@@ -263,20 +328,15 @@ export default function LiveCommunication() {
           </div>
           <div className="all-logs">
             <div className="log">
-              <span className="date">12-12-2021 05:24</span>
-              <span className="text-info ml-2">Edit</span>
-              <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span>{" "}
-              <span className="text-info ml-2">Edit</span>
-              <br />
-              <span className="author">Jeffrey:</span>
-              <div
-                className="log-content"
-                dangerouslySetInnerHTML={{ __html: messageInput }}
-              ></div>
+              <span className="date">3/10/2021 13:00</span>
+              <span className="text-info ml-2">Edit</span> <br />
+              <span className="author">Jeffrey Tan:</span>
+              <div>
+                <p>
+                  Okay, that the signal strength would just drop off and yaw
+                  would go to zero and pitch would go to 90.
+                </p>
+              </div>
             </div>
           </div>
           <div className="ckeditor">
