@@ -159,15 +159,23 @@
 
   .console-logs {
     width: 50%;
-
     display: flex;
     flex-direction: column;
+    transition: width 0.5s, height 0.5s;
   }
 
   .header {
     background-color: #062c43;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .header svg {
+    color: white;
   }
 
   .all-logs {
@@ -175,6 +183,7 @@
     overflow-y: scroll;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-bottom: 20px;
   }
 
   .my-message {
@@ -203,5 +212,23 @@
 
   .log {
     margin-top: 1rem;
+  }
+
+  .console-logs.hide {
+    width: 0%;
+    overflow: hidden;
+    transition: width 0.25s, height 0.25s;
+  }
+
+  .console-logs.zoom {
+    width: 100%;
+    transition: width 0.25s, height 0.25s;
+  }
+
+  .ckeditor {
+    overflow: scroll;
+    max-height: 50%;
+    max-width: 100%;
+    border-top: 1px solid $primary-color;
   }
 }
