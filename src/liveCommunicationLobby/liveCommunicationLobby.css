@@ -1,0 +1,34 @@
+body{
+    background-image: url('/src/images/background.jpg');
+    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.top-buffer{
+  padding-top: 20px;
+}
+.card{
+  margin: 15px;
+}
+.card:hover{
+  box-shadow: 5px 10px 20px 1px rgba(0,0,0,253)!important;
+  cursor: pointer;
+}
+.container-fluid .row{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.title{
+  font-size: 60px;
+  text-shadow: 5px 2px black;
+  text-align: center;
+  font-style: italic;
+  justify-content: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.search-form{
+  margin-top: 20px;
+  padding-left: 10px;
+  
+}
