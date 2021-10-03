@@ -8,6 +8,8 @@ import LiveCommunication from "./LiveCommunication/LiveCommunication";
 import Login from "./Login/LogIn";
 import Landing from "./Landing";
 import Register from "./Register/Register";
+import Profile from "./Profile/Profile";
+import MissionCard from "./Profile/MissionCard";
 import SideBar from "./Profile/SideBar";
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
           <Route exact={true} path="/login" component={Login}></Route>
           <Route exact={true} path="/landing" component={Landing}></Route>
           <Route exact={true} path="/register" component={Register}></Route>
-          <Route exact={true} path="/profile" component={SideBar}></Route>
+          <Route exact={true} path="/profile" component={Profile}></Route>
+          <Route exact={true} path="/mission" component={MissionCard}></Route>
         </Switch>
       </div>
     </Router>
