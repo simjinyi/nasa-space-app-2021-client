@@ -44,3 +44,7 @@
 ### Locked Past Logs
 
 ![Locked Past Logs](./Image/Past%20Log%20Locked.png)
+
+### Profile
+
+![Profile](./Image/Profile.png)
