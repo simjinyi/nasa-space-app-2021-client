@@ -3,7 +3,7 @@ import "./stylesheet/styles.css";
 import "./stylesheet/swiper.css";
 import "./stylesheet/bootstrap.css";
 import "./stylesheet/fontawesome-all.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LiveCommunication from "./LiveCommunication/LiveCommunication";
 import Login from "./Login/LogIn";
 import Landing from "./Landing";
@@ -15,7 +15,7 @@ function App() {
       <div>
         <Switch>
           <Route
-            path="/live-communication"
+            path="/live-communication/:id"
             exact={true}
             component={LiveCommunication}
           ></Route>

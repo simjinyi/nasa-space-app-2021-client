@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -6,18 +6,71 @@ import {
   faExpandArrowsAlt,
   faCompressArrowsAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { io } from "socket.io-client";
 import "./style.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
+const socket = io("ws://192.168.0.203:8081/");
+
 export default function LiveCommunication() {
+  const [messageInput, setMessageInput] = useState("");
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [zoomIdx, setZoomIdx] = useState(-1);
+  const [messages, setMessages] = useState([]);
+
+  const handleDateTimeString = (dateTime) => {
+    const object = new Date(dateTime);
+    return object.toLocaleString();
+  };
+
+  const handleMessage = useCallback(
+    (message) => ({
+      timestamp: handleDateTimeString(message.timestamp),
+      username: message.username,
+      body: message.payload[0].contentBody,
+    }),
+    []
+  );
+
+  const handleInput = (value) => {
+    setMessageInput(value);
+  };
+
+  const handleSend = () => {
+    // Ensure that the message is not empty
+    if (!messageInput) {
+      return;
+    }
+
+    socket.emit("createMessage", {
+      missionID: "6157df7fbc3231a632b72fe6",
+      content: messageInput,
+    });
+
+    setMessageInput("");
+  };
+
   useEffect(() => {
     document.title = "Live Communication";
   }, []);
 
-  const [showSidebar, setShowSidebar] = useState(true);
-  const [zoomIdx, setZoomIdx] = useState(-1);
-  const [log, setLog] = useState("");
+  useEffect(() => {
+    socket.on("messageCreated", (response) => {
+      const newMessage = handleMessage(response);
+      setMessages([...messages, newMessage]);
+    });
+  }, [handleMessage, messages]);
+
+  useEffect(() => {
+    socket.emit("loadMessage", {
+      missionID: "6157df7fbc3231a632b72fe6",
+    });
+
+    socket.on("messageLoaded", (response) => {
+      setMessages(response.map((message) => handleMessage(message)));
+    });
+  }, [handleMessage]);
 
   function uploadAdapter(loader) {
     return {
@@ -128,79 +181,13 @@ export default function LiveCommunication() {
             )}
           </div>
           <div className="all-logs">
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
+            {messages.map((message, index) => (
+              <div className="log" key={index}>
+                <span className="date">{message.timestamp}</span> <br />
+                <span className="author">{message.username}:</span>
+                <div dangerouslySetInnerHTML={{ __html: message.body }} />
+              </div>
+            ))}
           </div>
         </div>
         <div
@@ -241,17 +228,27 @@ export default function LiveCommunication() {
               <span className="author">Jeffrey:</span>
               <div
                 className="log-content"
-                dangerouslySetInnerHTML={{ __html: log }}
+                dangerouslySetInnerHTML={{ __html: messageInput }}
               ></div>
             </div>
           </div>
           <div className="ckeditor">
             <CKEditor
               editor={ClassicEditor}
-              data={log}
+              data={messageInput}
+              onReady={(editor) => {
+                // console.log("Editor is ready to use!", editor);
+              }}
               onChange={(event, editor) => {
                 const data = editor.getData();
-                setLog(data);
+                handleInput(data);
+                // console.log({ event, editor, data });
+              }}
+              onBlur={(event, editor) => {
+                // console.log("Blur.", editor);
+              }}
+              onFocus={(event, editor) => {
+                // console.log("Focus.", editor);
               }}
               config={{
                 extraPlugins: [uploadPlugin],
@@ -259,9 +256,9 @@ export default function LiveCommunication() {
             />
           </div>
           <div className="my-message">
-            <button className="btn btn-info h-100">
+            <button className="btn btn-info h-100" onClick={handleSend}>
               <span className="mr-3">Send</span>
-              <FontAwesomeIcon icon={faPaperPlane} onClick={() => {}} />
+              <FontAwesomeIcon icon={faPaperPlane} />
             </button>
           </div>
         </div>
