@@ -5,14 +5,55 @@ import {
   faPaperPlane,
   faPaperclip,
 } from "@fortawesome/free-solid-svg-icons";
+import { io } from "socket.io-client";
 import "./style.scss";
 
+const socket = io("ws://192.168.0.203:8081/");
+
 export default function LiveCommunication() {
+  const [messageInput, setMessageInput] = useState("");
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [messages, setMessages] = useState([]);
+
+  const handleMessage = (message) => ({
+    timestamp: message.timestamp,
+    username: message.username,
+    message: message.payload[0].contentBody,
+  });
+
+  const handleInputChange = (e) => {
+    setMessageInput(e.target.value);
+  };
+
+  const handleSend = () => {
+    socket.emit("createMessage", {
+      missionID: "6157df7fbc3231a632b72fe6",
+      content: messageInput,
+    });
+
+    setMessageInput("");
+  };
+
   useEffect(() => {
     document.title = "Live Communication";
   }, []);
 
-  const [showSidebar, setShowSidebar] = useState(true);
+  useEffect(() => {
+    socket.on("messageCreated", (response) => {
+      const newMessage = handleMessage(response);
+      setMessages([...messages, newMessage]);
+    });
+  }, [messages]);
+
+  useEffect(() => {
+    socket.emit("loadMessage", {
+      missionID: "6157df7fbc3231a632b72fe6",
+    });
+
+    socket.on("messageLoaded", (response) => {
+      setMessages(response.map((message) => handleMessage(message)));
+    });
+  }, []);
 
   return (
     <div className="bg">
@@ -67,79 +108,13 @@ export default function LiveCommunication() {
             <h3>All</h3>
           </div>
           <div className="all-logs">
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:24</span> <br />
-              <span className="author">Jeffrey:</span> Is time to be productive.
-            </div>
-            <div className="log">
-              <span className="date">12-12-2021 05:29</span> <br />
-              <span className="author">Jeffrey:</span>
-              你知不知道 你知不知道， 我等到花儿也谢了 喔哦哦
-            </div>
+            {messages.map((message, index) => (
+              <div className="log" key={index}>
+                <span className="date">{message.timestamp}</span> <br />
+                <span className="author">{message.username}:</span>
+                {message.message}
+              </div>
+            ))}
           </div>
         </div>
         <div className="console-logs">
@@ -166,9 +141,11 @@ export default function LiveCommunication() {
               placeholder="Type your log here..."
               type="text"
               rows={2}
+              value={messageInput}
+              onChange={handleInputChange}
             />
             <button className="btn">
-              <FontAwesomeIcon icon={faPaperPlane} onClick={() => {}} />
+              <FontAwesomeIcon icon={faPaperPlane} onClick={handleSend} />
             </button>
           </div>
         </div>
