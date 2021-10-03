@@ -31,9 +31,7 @@
 
 ### Live Logs
 
-![LiveLogs](./Image/Lobby%20Live%20Communication.png)
-
-![LiveLogsSearching](<./Image/Lobby%20Live%20Communication%20(Searching).png>)
+![LiveLogs](./Image/LiveComLobby.gif)
 
 ### Past Logs
 
@@ -41,13 +39,7 @@
 
 ### Live Communication & Editing
 
-![Live Communication & Editing Collapse](./Image/Live%20Communication%20Logs.png)
-
-![Live Communication & Editing Collapse](./Image/Live%20Communication%20Collapsible.png)
-
-![Live Communication & Editing Collapse](./Image/Live%20Communication%20Logs%20Maximize%20my%20log.png)
-
-![Live Communication & Editing Collapse](Image/Live%20Communication%20Maximize%20All%20logs.png)
+![Live Communication & Editing](./Image/LiveComEdit.gif)
 
 ### Locked Past Logs
 
