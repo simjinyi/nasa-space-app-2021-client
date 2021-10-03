@@ -12,6 +12,9 @@ import Register from "./Register/Register";
 import LiveCommunicationLobby from "./LiveLobby/LiveLobby";
 import LockedLogLobby from "./LockedLogLobby/LockedLogLobby";
 import LockedCommunication from "./LockedLobby/LockedLobby";
+import Profile from "./Profile/Profile";
+import MissionCard from "./Profile/MissionCard";
+import SideBar from "./Profile/SideBar";
 
 function App() {
   return (
@@ -41,6 +44,8 @@ function App() {
             path="/lockedLog"
             component={LockedCommunication}
           />
+          <Route exact={true} path="/profile" component={Profile}></Route>
+          <Route exact={true} path="/mission" component={MissionCard}></Route>
         </Switch>
       </div>
     </Router>
