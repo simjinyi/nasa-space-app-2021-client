@@ -1,26 +1,44 @@
-import React from 'react'
-import Landing from "./landing/Landing"
-import LiveCommunicationLobby from "./liveCommunicationLobby/LiveCommunicationLobby"
-import HistoryLogLobby from "./historyLogLobby/HistoryLogLobby"
+import React from "react";
 import "./stylesheet/magnific-popup.css";
 import "./stylesheet/styles.css";
 import "./stylesheet/swiper.css";
 import "./stylesheet/bootstrap.css";
 import "./stylesheet/fontawesome-all.css";
-
-const BrowserRouter = require("react-router-dom").BrowserRouter;
-const Route = require("react-router-dom").Route;
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LiveCommunication from "./LiveCommunication/LiveCommunication";
+import Login from "./Login/LogIn";
+import Landing from "./Landing/Landing";
+import Register from "./Register/Register";
+import LiveCommunicationLobby from "./LiveCommunicationLobby/LiveCommunicationLobby";
+import LockedLogLobby from "./LockedLogLobby/LockedLogLobby";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Route path="/landing" exact component={Landing}/>
-        <Route path="/liveCommunicationLobby" exact component={LiveCommunicationLobby}/>
-        <Route path="/historyLogLobby" exact component={HistoryLogLobby}/>
-      </BrowserRouter>
-    </div>
-  )
+    <Router>
+      <div>
+        <Switch>
+          <Route
+            path="/live-communication/:id"
+            exact={true}
+            component={LiveCommunication}
+          />
+          <Route exact={true} path="/login" component={Login} />
+          <Route exact={true} path="/register" component={Register} />
+          <Route exact={true} path="/landing" component={Landing} />
+          <Route
+            exact={true}
+            path="/liveCommunicationLobby"
+            component={LiveCommunicationLobby}
+          />
+          <Route
+            exact={true}
+            path="/lockedLogLobby"
+            component={LockedLogLobby}
+          />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

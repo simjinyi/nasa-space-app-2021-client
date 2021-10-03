@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const roomInfo = [
+  const historyInfo = [
     { roomName: "Mission ABC", roomOwner: "Jeffrey Tan", numberOfPerson: 100 },
     { roomName: "Mission XYZ", roomOwner: "Sim Jin Yi", numberOfPerson: 37 },
     {
@@ -23,7 +23,7 @@ function App() {
     },
   ];
 
-  const roomCard = (card) => {
+  const historyCard = (card, index) => {
     return (
       <div className="col-md-6">
         <div className="card">
@@ -65,21 +65,21 @@ function App() {
   }
 
   return (
-    <div className="LiveCommunicationLobby">
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="/landing">
+    <div className="HistoryLogLobby">
+      <div class="background">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/landing">
             <img
               src={require("../images/nasaLogo.svg").default}
               width="30"
               height="30"
-              className="d-inline-block align-top"
+              class="d-inline-block align-top"
               alt=""
             />
             NASA
           </a>
           <button
-            className="navbar-toggler"
+            class="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNav"
@@ -87,13 +87,13 @@ function App() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/landing">
-                  Home <span className="sr-only">(current)</span>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/landing">
+                  Home <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -105,58 +105,56 @@ function App() {
                   Add Room
                 </button>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
                   Account
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
                   Logout
                 </a>
               </li>
             </ul>
           </div>
         </nav>
-        <div className="container">
-          <div className="row top-buffer">
-            <div className="col-md mx-auto">
-              <h1 className="text-white title">Live Communication Lobby</h1>
-            </div>
+      </div>
+      <div className="container">
+        <div className="row top-buffer">
+          <div className="col-md mx-auto">
+            <h1 className="text-white title">History Log</h1>
           </div>
-          <div className="row-mx-15">
-            <div class="form-outline">
-              <input
-                type="search"
-                id="form1"
-                class="form-control search-form"
-                placeholder="Search by room name or room owner..."
-                aria-label="Search"
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
-              />
-            </div>
+        </div>
+        <div className="row-mx-15">
+          <div class="form-outline">
+            <input
+              type="search"
+              id="form1"
+              class="form-control search-form"
+              placeholder="Search by room name or room owner..."
+              aria-label="Search"
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
+            />
           </div>
-          <div className="container-fluid">
-            <div className="row">
-              {roomInfo
-                .filter((val) => {
-                  if (searchTerm == "") {
-                    return val;
-                  } else if (
-                    val.roomOwner
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                    val.roomName
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
-                  ) {
-                    return val;
-                  }
-                })
-                .map(roomCard)}
-            </div>
+        </div>
+        <div className="container-fluid">
+          <div className="row">
+            {historyInfo
+              .filter((val) => {
+                if (searchTerm == "") {
+                  return val;
+                } else if (
+                  val.roomOwner
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  val.roomName.toLowerCase().includes(searchTerm.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map(historyCard)}
           </div>
         </div>
       </div>
