@@ -136,7 +136,7 @@ export default function LiveCommunication() {
               src="https://jeffreytht.live/pic.jpg"
               alt="Jeffrey Tan"
             />
-            <div className="profile-name">Dato' Seri Paduka Tan Hoe Theng</div>
+            <div className="profile-name">Tan Hoe Theng</div>
           </li>
           <li>
             <img
@@ -157,6 +157,30 @@ export default function LiveCommunication() {
               alt="Jaclyn"
             />
             <div className="profile-name">Jaclyn Neoh Su Ying</div>
+          </li>
+          <li>
+            <img
+              className="profile"
+              src="https://scontent.fkul8-1.fna.fbcdn.net/v/t1.18169-9/14716166_1502782186415038_6142626552299967482_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=yP2oC2ZnYo0AX8cQJ3C&tn=uoqGRqqwFkm6aLHd&_nc_ht=scontent.fkul8-1.fna&oh=9d38a355de40ae42272cc8c8f780a8ea&oe=617E7F40"
+              alt="Jaclyn"
+            />
+            <div className="profile-name">Calvin Tan</div>
+          </li>
+          <li>
+            <img
+              className="profile"
+              src="https://media-exp1.licdn.com/dms/image/D5635AQFl_pqLP1iTMg/profile-framedphoto-shrink_400_400/0/1632202791187?e=1633338000&v=beta&t=JLd_90QdMgec0Ol6XiClbqseYT_R7yRVNTNFxycEUMY"
+              alt="Jaclyn"
+            />
+            <div className="profile-name">Lau Kuan Sin</div>
+          </li>
+          <li>
+            <img
+              className="profile"
+              src="https://scontent.fkul8-1.fna.fbcdn.net/v/t1.6435-9/131692598_3841080082610840_2205449051390480024_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=v4Q-aoH0SzIAX8kZsp-&tn=uoqGRqqwFkm6aLHd&_nc_ht=scontent.fkul8-1.fna&oh=db13419a0096d2221b324d2d791ef4cf&oe=617FA49B"
+              alt="Jaclyn"
+            />
+            <div className="profile-name">Wei Juin</div>
           </li>
         </div>
       </div>
