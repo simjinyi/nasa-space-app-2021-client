@@ -12,21 +12,23 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useParams } from "react-router";
 
-const socket = io("ws://localhost:8081/", {
-  // Need the JWT token here
-  query: {
-    token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpbWppbnlpIiwiZW1haWwiOiJhYmNAZ21haWwuY29tIiwiaWF0IjoxNjMzMjM0NTI5fQ.kqUy65eFAwDOELYtX1RH-EG3jKh3IHg67yhjCSl_nZM",
-  },
-});
-
 export default function LiveCommunication() {
   const [messageInput, setMessageInput] = useState("");
   const [showSidebar, setShowSidebar] = useState(true);
   const [zoomIdx, setZoomIdx] = useState(-1);
   const [messages, setMessages] = useState([]);
+  const [error, setError] = useState(false);
 
   const { id: missionID } = useParams();
+
+  const socket = io("ws://192.168.0.203:8081/", {
+    // Need the JWT token here
+    query: {
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNTkyYWYzMWQ0NjVkYjMwOWE1NjViMCIsInVzZXJuYW1lIjoic2ltamlueWkiLCJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2MzMyNDUxNTB9.CHIBwi8zTo5CrD6igcWMmcLv-9m3uGjdD2fbHqRfpJw",
+      missionID,
+    },
+  });
 
   const handleDateTimeString = (dateTime) => {
     const object = new Date(dateTime);
@@ -69,17 +71,21 @@ export default function LiveCommunication() {
       const newMessage = handleMessage(response);
       setMessages([...messages, newMessage]);
     });
-  }, [handleMessage, messages]);
+  }, [socket, handleMessage, messages]);
 
   useEffect(() => {
-    socket.emit("loadMessage", {
-      missionID,
-    });
+    socket.emit("initialize", {});
 
-    socket.on("messageLoaded", (response) => {
+    socket.on("messagesLoaded", (response) => {
+      if (!response) {
+        setError(true);
+        return;
+      }
+
       setMessages(response.map((message) => handleMessage(message)));
+      setError(false);
     });
-  }, [missionID, handleMessage]);
+  }, [socket, missionID, handleMessage]);
 
   function uploadAdapter(loader) {
     return {
@@ -111,6 +117,10 @@ export default function LiveCommunication() {
     editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
       return uploadAdapter(loader);
     };
+  }
+
+  if (error) {
+    return <div>Invalid Room ID</div>;
   }
 
   return (
